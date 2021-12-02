@@ -7,50 +7,79 @@
   margin: 0 auto;
   background-color: #8b3f3f;
   height: 100vh;
+  z-index: -1;
 }
 
 .popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   opacity: 0;
   visibility: hidden;
   transition: 0.5s ease-in-out;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .open {
   opacity: 1;
   visibility: visible;
   transition: 0.5s ease-in-out;
+  z-index: 100;
 }
 
 .popupBody {
-  max-width: 300px;
+  min-height: 100%;
   margin: 0 auto;
-  background-color: #317a51;
-  border-radius: 5px;
-  z-index: 100;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .popupContent {
+  border-radius: 5px;
+  background-color: #5dde95;
+  width: 300px;
+  height: 300px;
+  z-index: 100;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 100;
 }
 
 .popupItem {
   margin: 10px 0 30px 0;
+  cursor: pointer;
+  padding: 10px 0 10px 0;
+}
+
+.popupItem:hover {
+  background-color: #45bd7a;
 }
 
 .closePopup {
-  font-size: 30px;
+  color: #ffffff;
+  font-size: 80px;
   transform: rotate(45deg);
   justify-self: end;
   position: absolute;
-  top: -35px;
-  right: -20px;
+  top: -75px;
+  right: -45px;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.closePopup:hover {
+  transform: rotate(135deg);
+  transition: 0.5s;
 }
 
 button {
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .overlay {
@@ -59,4 +88,11 @@ button {
   left: 0;
   width: 100%;
   height: 100vh;
+  background-color: #000000;
+  opacity: 0.4;
+}
+
+.active {
+  background-color: #317a51;
+  color: #ffffff;
 }

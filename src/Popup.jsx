@@ -1,6 +1,23 @@
 import React from "react";
 
 const Popup = ({ openPopup, togglePopup }) => {
+  const [activeSort, setActiveSort] = React.useState(0);
+  const changeActiveSort = (index) => {
+    setActiveSort(index);
+  };
+
+  const sortItems = ["popular", "price", "name"];
+
+  let sortItem = sortItems.map((e, index) => (
+    <p
+      onClick={() => changeActiveSort(index)}
+      className={`popupItem ${activeSort === index ? "active" : ""}`}
+      key={index}
+    >
+      {e}
+    </p>
+  ));
+
   return (
     <div className={`popup ${openPopup ? "open" : ""}`}>
       <div className="popupBody">
@@ -9,9 +26,7 @@ const Popup = ({ openPopup, togglePopup }) => {
             +
           </span>
           <h1 className="popupTitle">POPUP</h1>
-          <span className="popupItem">popular</span>
-          <span className="popupItem">price</span>
-          <span className="popupItem">name</span>
+          {sortItem}
         </div>
       </div>
       <div onClick={togglePopup} className="overlay" />
